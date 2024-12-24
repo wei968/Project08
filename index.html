@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>寻宝游戏</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e6e6e6;
+      color: #555;
+      text-align: center;
+    }
+
+    .game-container {
+      margin: 30px auto;
+      padding: 15px;
+      width: 90%;
+      max-width: 400px;
+      border: 2px solid #888;
+      border-radius: 5px;
+      background-color: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .progress-bar {
+      height: 15px;
+      background: #888;
+      border-radius: 5px;
+      margin: 15px 0;
+      width: 0%;
+      transition: width 1s;
+    }
+
+    .task {
+      margin-top: 15px;
+      font-size: 16px;
+    }
+
+    .task.complete {
+      color: #008000;
+      font-weight: bold;
+    }
+
+    /* 心形按钮样式 */
+    #start-btn {
+      position: relative;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      color: #333;
+      padding: 0;
+    }
+
+    #start-btn::before,
+    #start-btn::after {
+      content: "";
+      position: absolute;
+      left: 15px;
+      top: 0;
+      width: 25px;
+      height: 25px;
+      background-color: pink;
+      border-radius: 50% 50% 0 0;
+      transform: rotate(-45deg);
+    }
+
+    #start-btn::after {
+      left: 0;
+      transform: rotate(45deg);
+    }
+
+    /* 黑暗模式样式 */
+    body.dark {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .game-container {
+      background-color: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="game-container">
+    <h1>寻宝游戏</h1>
+    <div id="progress" class="progress-bar"></div>
+    <div id="task-container"></div>
+    <button id="start-btn">START!</button>
+    <button id="toggle-light-btn">开关灯</button>
+    <div id="player-info">
+      <h2>玩家信息</h2>
+      <p>姓名：<span id="player-name"></span></p>
+      <p>等级：<span id="player-level"></span></p>
+      <p>总得分：<span id="player-total-score"></span></p>
+    </div>
+    <div id="score-history">
+      <h2>得分历史</h2>
+      <ul id="score-history-list"></ul>
+    </div>
+  </div>
+
+  <script src="treasure.js"></script>
+  <script>
+    // 获取开关灯按钮
+    const toggleLightBtn = document.getElementById('toggle-light-btn');
+
+    // 点击开关灯按钮时切换页面的黑暗模式
+    toggleLightBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+    });
+  </script>
+</body>
+
+</html>
